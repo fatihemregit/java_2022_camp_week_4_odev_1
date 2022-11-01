@@ -25,21 +25,34 @@ public class ProgrammingLanguagesManager implements ProgrammingLanguagesService{
 
 	@Override
 	public void add(ProgrammingLanguages programmingLanguages) {
-		String programmingLanguagesName = programmingLanguages.getName();
-		if(!programmingLanguagesName.isEmpty()) {
-			List<ProgrammingLanguages> programmingLanguagesList = programmingLanguagesRepository.list();
-			for (ProgrammingLanguages programmingLanguages2 : programmingLanguagesList) {
-				if(!programmingLanguages2.getName().equalsIgnoreCase(programmingLanguagesName)) {
-					programmingLanguagesRepository.add(programmingLanguages);
-					break;
-				}
+		
+		if(!(programmingLanguages.getName().equals("") || programmingLanguages.getName().equals(null))) {
+			String programmingLanguagesName = programmingLanguages.getName();
+			if(isnameexist(programmingLanguagesRepository.list(), programmingLanguagesName)) {
+				return;
 			}
-		}else {
+			else {
+				programmingLanguagesRepository.add(programmingLanguages);
+			}
+		}
+		else {
 			return;
 		}
 		
+		
+		
 	}
-
+	
+	public boolean isnameexist(List<ProgrammingLanguages> programmingLanguageslist,String name) {
+		for (ProgrammingLanguages programmingLanguages : programmingLanguageslist) {
+			if(programmingLanguages.getName().equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
 	@Override
 	public void delete(int id) {
 		programmingLanguagesRepository.delete(id);
