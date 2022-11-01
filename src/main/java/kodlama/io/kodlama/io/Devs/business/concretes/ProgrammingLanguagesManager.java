@@ -26,10 +26,10 @@ public class ProgrammingLanguagesManager implements ProgrammingLanguagesService{
 	@Override
 	public void add(ProgrammingLanguages programmingLanguages) {
 		String programmingLanguagesName = programmingLanguages.getName();
-		if(programmingLanguagesName != null) {
+		if(!programmingLanguagesName.isEmpty()) {
 			List<ProgrammingLanguages> programmingLanguagesList = programmingLanguagesRepository.list();
 			for (ProgrammingLanguages programmingLanguages2 : programmingLanguagesList) {
-				if(!programmingLanguages2.getName().matches(programmingLanguagesName)) {
+				if(!programmingLanguages2.getName().equalsIgnoreCase(programmingLanguagesName)) {
 					programmingLanguagesRepository.add(programmingLanguages);
 					break;
 				}

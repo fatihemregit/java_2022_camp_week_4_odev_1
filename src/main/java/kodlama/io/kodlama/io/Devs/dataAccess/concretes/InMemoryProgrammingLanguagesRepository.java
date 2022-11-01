@@ -14,7 +14,7 @@ import kodlama.io.kodlama.io.Devs.entities.concretes.ProgrammingLanguages;
 /*
   	MY Notes
   	update fonksiyonu listId(listenin index) ile değil ögenin ıd si ile çalışabilecek hale getirelecek(Yapıldı)
-	add fonksiyonunda sıkıntı yok elleme.()
+	add fonksiyonunda sıkıntı yok elleme.
 	listall fonksiyonunda sıkıntı yok elleme.
 	getbyId fonksiyonunda sıkıntı yok elleme
 	delete fonksiyonu ilk çalışmada hata veriyor ama verilen id ye sahip ögeyi başarıyla  siliyor. daha sonraki çalışmalarında düzgün (hata vermiyor ve ögeyi başarıyla siliyor) çalışıyor.(kendiliğinden çözüldü)
@@ -41,7 +41,8 @@ public class InMemoryProgrammingLanguagesRepository implements ProgrammingLangua
 
 
 	@Override
-	public void add(ProgrammingLanguages programmingLanguages) {
+	public void add(ProgrammingLanguages programmingLanguages){
+		
 		programmingLanguageslist.add(programmingLanguages);
 		
 	}
